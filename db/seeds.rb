@@ -7,4 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 new_user_params = {name: "jim", email: "jim@example.com", password: "jim", password_confirmation: "jim"}
-User.create(new_user_params)
+jim = User.create(new_user_params)
+
+plan = Plan.create(name: "a plan")
+
+jim.plans << plan

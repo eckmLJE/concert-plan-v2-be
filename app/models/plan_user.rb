@@ -1,0 +1,2 @@
+class PlansUser < ApplicationRecord
+end
