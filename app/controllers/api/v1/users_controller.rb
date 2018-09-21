@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
 
     def new
         @user = User.new
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     end
 
     def index
-      @users = User.all
       render json: User.all
     end
     
@@ -33,6 +32,5 @@ class UsersController < ApplicationController
       end
       
     # ----- end of added lines -----
-    end
 
 end
