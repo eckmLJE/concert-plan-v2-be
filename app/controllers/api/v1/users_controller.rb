@@ -1,36 +1,41 @@
 class Api::V1::UsersController < ApplicationController
 
-    def new
-        @user = User.new
-    end
-    
-    def create
-      @user = User.new(user_params)
-      
-      # store all emails in lowercase to avoid duplicates and case-sensitive login errors:
-      @user.email.downcase!
-      
-      if @user.save
-        # If user saves in the db successfully:
-        flash[:notice] = "Account created successfully!"
-      else
-        # If user fails model validation - probably a bad password or duplicate email:
-        flash.now.alert = "Oops, couldn't create account. Please make sure you are using a valid email and password and try again."
-      end
-    end
+  before_action :authenticate_user, only: [:show_user]
 
-    def index
-      render json: User.all
+  def index
+    @users = User.all
+    render json: @users
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      render json: @user, status: :accepted
+    else
+      render json: {errors: @user.errors.full_messages}, status: :unprocessible_entity
     end
-    
-    private
-    
-      def user_params
-        # strong parameters - whitelist of allowed fields #=> permit(:name, :email, ...)
-        # that can be submitted by a form to the user model #=> require(:user)
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
-      end
-      
-    # ----- end of added lines -----
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if  @user.update(user_params)
+      render json: @user, status: :accepted
+    else
+      render json: {errors: @user.errors.full_messages}, status: :unprocessible_entity
+    end
+  end
+
+  def show_user
+    render json: current_user
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+end
 
 end
