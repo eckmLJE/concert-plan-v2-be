@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2018_09_21_224908) do
 
   create_table "plans", force: :cascade do |t|
     t.string "name"
+    t.string "tmid"
+    t.text "details"
     t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
