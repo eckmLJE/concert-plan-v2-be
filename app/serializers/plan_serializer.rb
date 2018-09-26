@@ -1,4 +1,4 @@
 class PlanSerializer < ActiveModel::Serializer
-  attributes :id, :name, :datetime, :users
+  attributes :id, :name, :details, :tmid, :datetime, :users
   has_many :users
 end
