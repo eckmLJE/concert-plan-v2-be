@@ -17,10 +17,17 @@ class Api::V1::PlansController < ApplicationController
         end
     end
 
+    def update
+        @plan = Plan.find(params[:id])
+        @plan.users << current_user
+        @plan.save
+        render json: @plan, status: :accepted
+    end
+
     private
 
     def plan_params
-        params.require(:plan).permit(:name, :tmid, :details, :imgUrl, :venue, :datetime)
+        params.require(:plan).permit(:name, :tmid, :details, :creator_id, :imgUrl, :venue, :datetime)
     end
 
 end

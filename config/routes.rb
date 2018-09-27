@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users
       resources :plans
       post 'user_token' => 'user_token#create'
+      post '/plans/:id' => 'plans#update'
       get '/user', to: 'users#show_user'
     end
   end
