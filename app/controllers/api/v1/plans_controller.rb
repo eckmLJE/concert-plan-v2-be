@@ -20,7 +20,7 @@ class Api::V1::PlansController < ApplicationController
     private
 
     def plan_params
-        params.require(:plan).permit(:name, :tmid, :details, :venue, :datetime)
+        params.require(:plan).permit(:name, :tmid, :details, :imgUrl, :venue, :datetime)
     end
 
 end

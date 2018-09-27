@@ -6,9 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-new_user_params = {name: "jim", email: "jim@example.com", password: "jim", password_confirmation: "jim"}
+new_user_params = {name: "Lucas", email: "lucas@example.com", password: "lucas", password_confirmation: "lucas"}
 jim = User.create(new_user_params)
-
-plan = Plan.create(name: "a plan")
-
-jim.plans << plan

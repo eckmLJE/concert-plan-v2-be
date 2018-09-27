@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_09_21_224908) do
     t.string "tmid"
     t.text "details"
     t.string "venue"
+    t.text "imgUrl"
     t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
