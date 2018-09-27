@@ -9,17 +9,18 @@ class Api::V1::PlansController < ApplicationController
     def create
         @plan = Plan.new(plan_params)
         if @plan.valid?
+            @plan.users << current_user
             @plan.save
             render json: @plan, status: :accepted
         else
-            render json: {errors: @user.errors.full_messages}, status: :unprocessible_entity
+            render json: {errors: @plan.errors.full_messages}, status: :unprocessible_entity
         end
     end
 
     private
 
     def plan_params
-        params.require(:plan).permit(:name, :tmid, :details, :datetime)
+        params.require(:plan).permit(:name, :tmid, :details, :venue, :datetime)
     end
 
 end
