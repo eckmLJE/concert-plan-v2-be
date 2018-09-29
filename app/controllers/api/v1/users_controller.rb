@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
-  # before_action :authenticate_user, only: [:show_user]
+  before_action :authenticate_user, only: [:show_user]
 
   def index
     @users = User.all
