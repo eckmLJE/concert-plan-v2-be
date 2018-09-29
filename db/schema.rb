@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_224908) do
+ActiveRecord::Schema.define(version: 2018_09_29_170236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "plans", force: :cascade do |t|
     t.string "name"
-    t.string "tmid"
+    t.datetime "datetime"
+    t.integer "tmid"
+    t.string "imgUrl"
+    t.string "creator_id"
     t.text "details"
     t.string "venue"
-    t.text "imgUrl"
-    t.integer "creator_id"
-    t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2018_09_21_224908) do
     t.integer "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plan_id", "user_id"], name: "index_plans_users_on_plan_id_and_user_id", unique: true
+    t.index ["user_id"], name: "index_plans_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
