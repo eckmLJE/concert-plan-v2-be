@@ -75,11 +75,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
+
 production:
   <<: *default
   database: cp-be-jwt_production
   username: cp-be-jwt
   password: <%= ENV['CP-BE-JWT_DATABASE_PASSWORD'] %>
+  adapter: postgres
+  url: <%= ENV['DATABASE_URL'] %>
