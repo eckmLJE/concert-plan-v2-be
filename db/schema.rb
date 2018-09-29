@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_170236) do
   create_table "plans", force: :cascade do |t|
     t.string "name"
     t.datetime "datetime"
-    t.integer "tmid"
+    t.string "tmid"
     t.string "imgUrl"
     t.string "creator_id"
     t.text "details"
