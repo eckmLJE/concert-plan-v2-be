@@ -17,3 +17,4 @@ names.each {|name| User.create(
         }
     )
 }
+
