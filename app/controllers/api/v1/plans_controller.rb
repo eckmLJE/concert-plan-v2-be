@@ -24,6 +24,15 @@ class Api::V1::PlansController < ApplicationController
         render json: @plan, status: :accepted
     end
 
+    def remove_user
+        @user = current_user
+        @plan = @user.plans.find(params[:id])
+        @user.plans.delete(@plan)
+        @user.save
+        @new_plan = Plan.find(params[:id])
+        render json: @new_plan, status: :accepted
+    end
+
     private
 
     def plan_params
