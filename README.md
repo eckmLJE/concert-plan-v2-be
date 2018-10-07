@@ -1,24 +1,5 @@
-# README
+ConcertPlan (Back End)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+View upcoming concerts and make plans with your friends to attend them. Calls Ticketmaster API for resale market and persists "plans" in back end for groups of friends.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+User auth with bcrypt and JWT. 
