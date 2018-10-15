@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post '/plans/:id' => 'plans#update'
       post '/plans/remove_user/:id' => 'plans#remove_user'
       get '/user', to: 'users#show_user'
+      get '/ping', to: 'plans#ping'
     end
   end
 end

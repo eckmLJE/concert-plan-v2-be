@@ -1,6 +1,6 @@
 class Api::V1::PlansController < ApplicationController
 
-    before_action :authenticate_user
+    before_action :authenticate_user, except: [:ping]
 
     def index
         render json: Plan.all
@@ -31,6 +31,10 @@ class Api::V1::PlansController < ApplicationController
         @user.save
         @new_plan = Plan.find(params[:id])
         render json: @new_plan, status: :accepted
+    end
+
+    def ping
+        render json: {"pinged": "true"}
     end
 
     private
