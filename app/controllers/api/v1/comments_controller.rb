@@ -11,6 +11,7 @@ class Api::V1::CommentsController < ApplicationController
     def create
         @comment = Comment.new(comment_params)
         if @comment.valid?
+            @comment.user_name = current_user.name
             @comment.save
             render json: @comment, status: :accepted
         else
