@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :comments
   namespace :api do
     namespace :v1 do
+      resources :comments
       resources :users
       resources :plans
       post 'user_token' => 'user_token#create'
